@@ -1,6 +1,7 @@
 const DIGITS = "0123456789";
 const SPACES = " -";
 const SPACE = " ";
+const EMPTY = "";
 
 export const formats = [
   {
@@ -75,7 +76,7 @@ export const formats = [
   }
 ]
 
-export const removeFormatting = (text) => text.replace(' ', '');
+export const removeFormatting = (text) => text.replace(SPACE, EMPTY);
 
 export const detectFormat = (text) => {
   const value = removeFormatting(text);
@@ -111,7 +112,7 @@ const insertGap = (result, i, testDebug) => {
 
 const skipValue = (result, i, testDebug) => {
   testDebug && console.log(i, 'skipped');
-  if(result.text.length < result.text.selectionStart) {
+  if(result.text.length < result.selectionStart) {
     testDebug && console.log('position -')
     result.selectionStart--;
     result.selectionEnd--;
@@ -126,7 +127,6 @@ export const onCardInputChange = (input, testDebug = false) => {
     selectionEnd: input.selectionEnd || 0,
     format: detectFormat(input.text),
   };
-  console.log(result);
   const inputLength = input.text.length;
   const maxLength = result.format.blocks.reduce((acc, v) => acc + v, 0) + result.format.blocks.length - 1;
   for (let i = 0; i < inputLength; i++) {

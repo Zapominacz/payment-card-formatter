@@ -4,6 +4,9 @@ Logic for correct payment card input handle for react
 ## Run project
 `yarn && yarn start`
 
+## Demo
+https://codesandbox.io/s/x3vj6jk5vo
+
 ## Features
 * Keep carriage position in place
 * Detect card format type

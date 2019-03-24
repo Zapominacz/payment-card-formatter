@@ -45,6 +45,11 @@ it('Add digit at the end of group will move digit to new group', () => {
   .toEqual({ text: '5325 3253 1152 5325', position: 11 });
 });
 
+it('Bad character will make position hold', () => {
+  expect(prepareResult('5325 3a253 1525 3252', 7))
+  .toEqual({ text: '5325 3253 1525 3252', position: 6 });
+});
+
 it('Remove from "aligned" value first digit in group will move carret at the group beginning', () => {
   expect(prepareResult('5235 235 5', 5))
   .toEqual({ text: '5235 2355', position: 5 });
